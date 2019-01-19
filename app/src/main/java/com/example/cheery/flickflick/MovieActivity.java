@@ -2,8 +2,11 @@ package com.example.cheery.flickflick;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.cheery.flickflick.adapters.MoviesAdapter;
 import com.example.cheery.flickflick.models.Movie;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -12,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -25,6 +29,10 @@ public class MovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+        RecyclerView rvMovies = findViewById(R.id.rvMovies);
+        movies = new ArrayList<>();
+        final MoviesAdapter adapter = new MoviesAdapter(this, movies);
+        rvMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(MOVIE_URL, new JsonHttpResponseHandler() {
@@ -32,7 +40,8 @@ public class MovieActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     JSONArray movieJSONArray = response.getJSONArray("results");
-                    movies = Movie.fromJsonArray(movieJSONArray);
+                    movies.addAll(Movie.fromJsonArray(movieJSONArray));
+                    adapter.notifyDataSetChanged();
                     Log.d("movies", movieJSONArray.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();

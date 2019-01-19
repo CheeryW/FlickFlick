@@ -13,9 +13,15 @@ public class Movie {
     String overview;
 
     public Movie(JSONObject jsonObject) throws JSONException {
-        posterPath = jsonObject.getString("poster_path");
-        title = jsonObject.getString("original_title");
-        overview = jsonObject.getString("overview");
+        if(jsonObject.optJSONObject("poster_path") != null) {
+            posterPath = jsonObject.getString("poster_path");
+        }
+        if(jsonObject.optJSONObject("original_title") != null) {
+            title = jsonObject.getString("original_title");
+        }
+        if(jsonObject.optJSONObject("overview") != null) {
+            overview = jsonObject.getString("overview");
+        }
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
