@@ -33,6 +33,7 @@ public class MovieActivity extends AppCompatActivity {
         movies = new ArrayList<>();
         final MoviesAdapter adapter = new MoviesAdapter(this, movies);
         rvMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rvMovies.setAdapter(adapter);
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(MOVIE_URL, new JsonHttpResponseHandler() {

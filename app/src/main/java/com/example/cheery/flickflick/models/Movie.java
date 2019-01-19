@@ -13,15 +13,15 @@ public class Movie {
     String overview;
 
     public Movie(JSONObject jsonObject) throws JSONException {
-        if(jsonObject.optJSONObject("poster_path") != null) {
+        //if(jsonObject.optJSONObject("poster_path") != null) {
             posterPath = jsonObject.getString("poster_path");
-        }
-        if(jsonObject.optJSONObject("original_title") != null) {
+      //  }
+//        if(jsonObject.optJSONObject("original_title") != null) {
             title = jsonObject.getString("original_title");
-        }
-        if(jsonObject.optJSONObject("overview") != null) {
+//        }
+//        if(jsonObject.optJSONObject("overview") != null) {
             overview = jsonObject.getString("overview");
-        }
+//        }
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
