@@ -11,17 +11,13 @@ public class Movie {
     String posterPath;
     String title;
     String overview;
+    String backdropPath;
 
     public Movie(JSONObject jsonObject) throws JSONException {
-        //if(jsonObject.optJSONObject("poster_path") != null) {
-            posterPath = jsonObject.getString("poster_path");
-      //  }
-//        if(jsonObject.optJSONObject("original_title") != null) {
-            title = jsonObject.getString("original_title");
-//        }
-//        if(jsonObject.optJSONObject("overview") != null) {
-            overview = jsonObject.getString("overview");
-//        }
+            posterPath = jsonObject.optString("poster_path");
+            title = jsonObject.optString("title");
+            overview = jsonObject.optString("overview");
+            backdropPath = jsonObject.optString("backdrop_path");
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -34,6 +30,10 @@ public class Movie {
 
     public String getPosterPath() {
         return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
+    }
+
+    public String getBackdropPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
     }
 
     public String getTitle() {
