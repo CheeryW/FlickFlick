@@ -1,5 +1,5 @@
 # FlickFlick
-Flix is an app that allows users to browse movies from the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
+FlickFlick is an app that allows users to browse movies from the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
 📝 Part 2 coming soon
 
