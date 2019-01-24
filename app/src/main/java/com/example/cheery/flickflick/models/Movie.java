@@ -3,21 +3,28 @@ package com.example.cheery.flickflick.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
+
+    double voteAverage;
     String posterPath;
     String title;
     String overview;
     String backdropPath;
+
+    public Movie() { } // empty constructor needed by Parceler library
 
     public Movie(JSONObject jsonObject) throws JSONException {
             posterPath = jsonObject.optString("poster_path");
             title = jsonObject.optString("title");
             overview = jsonObject.optString("overview");
             backdropPath = jsonObject.optString("backdrop_path");
+            voteAverage = jsonObject.optDouble("vote_average");
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -43,4 +50,6 @@ public class Movie {
     public String getOverview() {
         return overview;
     }
+
+    public double getVoteAverage() { return voteAverage; }
 }
