@@ -15,8 +15,7 @@
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".MovieActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".MovieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
