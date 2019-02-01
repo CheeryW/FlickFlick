@@ -23,8 +23,9 @@ FlickFlick is an app that allows users to browse movies from the [The Movie Data
 <img src="http://g.recordit.co/h6XxebFnNA.gif" width=250><br>
 
 ### Notes
-It's actually a pretty smooth process building this app, but after adding new features, the landscape mode causes the app to
-crash, so I have decided to prohibit landscape mode on the main page from initializing for now until I know how to solve this problem.
+It was actually a pretty smooth process building this app, but after adding new features, the landscape mode caused the app to
+crash, so I decided to prohibit landscape mode on the main page from initializing at first. Now I have fixed this problem by
+giving the container for movie item in landscape mode the same ID as the one in portrait mode, thanks to the hint from one of the CodePath classmates.
 
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
